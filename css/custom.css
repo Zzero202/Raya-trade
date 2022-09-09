@@ -1,0 +1,342 @@
+/* ----------------------------------------------------------------
+	Custom CSS
+
+	Add all your Custom Styled CSS here for New Styles or
+	Overwriting Default Theme Styles for Better Handling Updates
+-----------------------------------------------------------------*/
+*{
+	font-family: roboto;
+}
+.dark .menu-item:hover > .menu-link,
+.dark .menu-item.current > .menu-link {
+	color: #284db7;
+}
+.menu-item{
+	transition: all .3s;
+}
+
+
+.title-bottom-border h1, .title-bottom-border h2, .title-bottom-border h3, .title-bottom-border h4, .title-bottom-border h5, .title-bottom-border h6 {
+    width: 100%;
+    padding: 0 0 0.75rem;
+    border-bottom: 2px solid #284db7;
+}
+@media screen and (max-width:1215px){
+.menu-item div{
+	font-size:14px !important;
+}
+}
+@media screen and (max-width:1083px){
+.menu-item div{
+	font-size:12px !important;
+}
+}
+@media screen and (max-width:1025px){
+.menu-item div{
+	font-size:12px !important;
+}
+}
+@media screen and (max-width:1000px){
+.menu-item div{
+	font-size:11px !important;
+}
+}
+#page-title.page-title-dark {
+	background-color: transparent;
+	text-shadow: 1px 1px 1px rgba(0,0,0,0.1) !important;
+	border-bottom: none;
+}
+.content-wrap {
+	position: relative;
+	padding: 0 0;
+	overflow: hidden;
+}
+
+.dark .menu-link {
+    color: #F7F7F7;
+}
+.sticky-header div{
+	color:black;
+}
+@media screen and (max-width:992px){
+	.hvr-underline-from-center:before {
+		content: "";
+		position: absolute;
+		z-index: -1;
+		left: 0%;
+		right: 0;
+		bottom: 20px;
+		background:transparent;
+		height:4px;
+		-webkit-transition-property: left, right;
+		transition-property: left, right;
+		-webkit-transition-duration: 0.3s;
+		transition-duration: 0.3s;
+		-webkit-transition-timing-function: ease-out;
+		transition-timing-function: ease-out;
+	  }
+}
+/* Set the size of the div element that contains the map */
+#map {
+	height: 400px;
+	/* The height is 400 pixels */
+	width: 100%;
+	/* The width is the width of the web page */
+  }
+  html{
+	  scroll-behavior: smooth !important;
+  }
+  body{
+	  scroll-behavior: smooth !important;
+  }
+
+ /* Style the tab buttons */
+ .nav-pills .nav-link.active,
+ .nav-pills .show > .nav-link {
+	 color: #fff;
+	background:none;
+
+
+	}
+	.nav-pills img{
+		transition:all .5s;
+		width: 100px;
+		transform: scale(1.1)
+	}
+	.nav-pills img:hover{
+		transform: scale(1.6);
+	}
+
+	
+
+	
+	.contact-raya ul li{
+		padding:5px 0 !important
+	}
+	.location-pin{
+		border:none;
+		background-color: transparent;
+		position: absolute;
+		left:56%;
+		top:33%;
+		transition:all .5s;
+		font-size:50px;
+	}
+	.location-pin2{
+		border:none;
+		background-color: transparent;
+		position: absolute;
+		left:45%;
+		top:37%;
+		font-size: 50px;
+		transition:all .5s;
+	}
+	@media screen and (max-width:1200px){
+		.location-pin{
+			border:none;
+			background-color: transparent;
+			position: absolute;
+			left:56%;
+			top:33%;
+			transition:all .5s;
+			font-size:40px;
+		}
+		.location-pin2{
+			border:none;
+			background-color: transparent;
+			position: absolute;
+			left:45%;
+			top:37%;
+			font-size: 40px;
+			transition:all .5s;
+		}	
+	}
+	@media screen and (max-width:992px){
+		.location-pin{
+			border:none;
+			background-color: transparent;
+			position: absolute;
+			left:56%;
+			top:28%;
+			transition:all .5s;
+			font-size:40px;
+		}
+		.location-pin2{
+			border:none;
+			background-color: transparent;
+			position: absolute;
+			left:45%;
+			top:30%;
+			font-size: 40px;
+			transition:all .5s;
+		}	
+	}
+	@media screen and (max-width:768px){
+		.location-pin{
+			border:none;
+			background-color: transparent;
+			position: absolute;
+			left:56%;
+			top:28%;
+			transition:all .5s;
+			font-size:30px;
+		}
+		.location-pin2{
+			border:none;
+			background-color: transparent;
+			position: absolute;
+			left:45%;
+			top:30%;
+			font-size: 30px;
+			transition:all .5s;
+		}	
+	}
+	@media screen and (max-width:500px){
+		.location-pin{
+			border:none;
+			background-color: transparent;
+			position: absolute;
+			left:56%;
+			top:28%;
+			transition:all .5s;
+			font-size:22px;
+		}
+		.location-pin2{
+			border:none;
+			background-color: transparent;
+			position: absolute;
+			left:45%;
+			top:30%;
+			font-size: 22px;
+			transition:all .5s;
+		}	
+	}
+	.map-icon{
+		position: relative;
+	}
+	
+	.dark .primary-menu:not(.not-dark) .sub-menu-container .menu-item:hover > .menu-link {
+		background-color: rgba(0,0,0,0.1);
+		color: #284db7;
+	}
+.grey-phones{
+	background-color: #F9F9F9;
+}
+	footer a{
+	color:#284db7
+		
+	}
+
+	footer p{
+		color:grey
+	}
+	footer ul li{
+		color:grey
+	}
+
+		.section-padding{
+		padding:30px 0;
+		}
+		.brand-carousel {
+	
+		margin-bottom: 10px;
+		}
+		.owl-dots {
+		text-align: center;
+		margin-top: 4%;
+		}
+		.owl-dot {
+		display: inline-block;
+		height: 15px !important;
+		width: 15px !important;
+		background-color: #878787 !important;
+		opacity: 0.8;
+		border-radius: 50%;
+		margin: 0 5px;
+		}
+		.owl-dot.active {
+		background-color: #000 !important;
+		}
+		.single-logo img{
+			padding:0 30px;
+		}
+
+		
+
+		.card{
+			height: auto;
+			
+		}
+
+.hidden-text{
+	display: none;
+}
+.readmore{
+	color:#284db7;
+	font-weight: bolder;
+	cursor: pointer;
+}
+.readless{
+	display: none;
+	font-weight: bolder;
+	cursor: pointer;
+
+}
+.hidden-text1{
+	display: none;
+}
+.readmore1{
+	color:#284db7;
+	font-weight: bolder;
+	cursor: pointer;
+}
+.readless1{
+	display: none;
+	font-weight: bolder;
+	cursor: pointer;
+
+}
+.hidden-text2{
+	display: none;
+}
+.readmore2{
+	color:#284db7;
+	font-weight: bolder;
+	cursor: pointer;
+}
+.readless2{
+	display: none;
+	font-weight: bolder;
+	cursor: pointer;
+
+}
+.hidden-text3{
+	display: none;
+}
+.readmore3{
+	color:#284db7;
+	font-weight: bolder;
+	cursor: pointer;
+}
+.readless3{
+	display: none;
+	font-weight: bolder;
+	cursor: pointer;
+
+}
+
+.hidden-text4{
+	display: none;
+}
+.readmore4{
+	color:#284db7;
+	font-weight: bolder;
+	cursor: pointer;
+}
+.readless4{
+	display: none;
+	font-weight: bolder;
+	cursor: pointer;
+
+}
+

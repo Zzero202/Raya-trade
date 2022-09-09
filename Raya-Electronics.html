@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+	<html dir="ltr" lang="en-US">
+	<head>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+		<script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBlyEWJCx7TKWS2Y61Hcq5hJSWhCSYO240'></script>
+		<script type="text/javascript">
+			var map; var infowindow;
+			function InitializeMapMain() {
+				var latlng = new google.maps.LatLng(30.78903675126116, 31.146240234375); //  27.068909, 34.541016
+				var myOptions =
+				{
+					zoom: 8,
+					center: latlng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(document.getElementById("map"), myOptions);
+			}
+			function InitializeMap() {
+				var latlng = new google.maps.LatLng(30.040041677300568, 31.207523345947266); //26.686729520004, 31.904296875 == 29.978729, 30.739746
+				var myOptions =
+				{
+					zoom: 15,
+					center: latlng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(document.getElementById("map"), myOptions);
+			}
+			function markicons() {
+				InitializeMapMain();
+				var xx = document.getElementById("Lit_Latitude");
+				for (var i = 0; i <= ltlng.length; i++) {
+	
+					marker = new google.maps.Marker({
+						map: map,
+						position: ltlng[i],
+						title: 'click here!',
+						icon: '/images/GoogleIcon.png'
+					});
+	
+					(function (i, marker) {
+						google.maps.event.addListener(marker, 'click', function () {
+	
+							if (!infowindow) {
+								infowindow = new google.maps.InfoWindow();
+							}
+							infowindow.setContent(Addresses[i]);
+							infowindow.open(map, marker); // Calling the open method of the infoWindow 
+						});
+	
+					})(i, marker);
+	
+	
+				}
+	
+			}
+	
+			function FindLocation(lat, lng, info) {
+				geocoder = new google.maps.Geocoder();
+				InitializeMap();
+				var latlng = new google.maps.LatLng(lat, lng);
+	
+				map.setCenter(latlng);
+				var marker = new google.maps.Marker({
+					map: map,
+					position: latlng,
+					icon: '/images/GoogleIcon.png'
+				});
+	
+				var infowindow = new google.maps.InfoWindow({
+					content: info
+				});
+	
+				google.maps.event.addListener(marker, 'click', function () {
+					// Calling the open method of the infoWindow 
+					infowindow.open(map, marker);
+				});
+				infowindow.open(map, marker);
+				return false;
+	
+			}
+			window.onload = markicons;
+	
+			var ltlng = [];
+			ltlng.push(new google.maps.LatLng(30.0626010, 31.2645890));
+			ltlng.push(new google.maps.LatLng(30.1269120, 31.3272190));
+			ltlng.push(new google.maps.LatLng(30.005354, 30.970986));
+			
+			ltlng.push(new google.maps.LatLng(30.051253, 31.201364));
+			ltlng.push(new google.maps.LatLng(29.8492063, 31.3316227));
+			ltlng.push(new google.maps.LatLng(29.9749200, 31.2763130));
+			ltlng.push(new google.maps.LatLng(30.0770280, 31.3101550));
+	
+			ltlng.push(new google.maps.LatLng(30.0688640, 31.2452820));
+			ltlng.push(new google.maps.LatLng(30.1066920, 31.3336130));
+			ltlng.push(new google.maps.LatLng(30.0513620, 31.3502330));
+			ltlng.push(new google.maps.LatLng(30.0566282, 31.3213528));
+			ltlng.push(new google.maps.LatLng(30.100445, 31.316403));
+			ltlng.push(new google.maps.LatLng(30.0409110, 31.2092320));
+			ltlng.push(new google.maps.LatLng(30.0551040, 31.2015630));
+			ltlng.push(new google.maps.LatLng(30.0485940, 31.3468800));
+			ltlng.push(new google.maps.LatLng(29.994260, 31.1608780));
+			ltlng.push(new google.maps.LatLng(30.0737150, 31.3463000));
+			ltlng.push(new google.maps.LatLng(30.0024560, 31.4240190));
+	
+			ltlng.push(new google.maps.LatLng(31.1984500, 29.8934110));
+			ltlng.push(new google.maps.LatLng(31.2117080, 29.9504730));
+			ltlng.push(new google.maps.LatLng(31.0439620, 31.3664340));
+			ltlng.push(new google.maps.LatLng(26.5643090, 31.6933070));
+	
+			var Addresses = [];
+			//Greater Cairo
+			Addresses.push("El-Zaher: 2  El-Abbasya St.- In front of El-Zaher Bebars Mosque - Meeting Point Mall");
+			Addresses.push("Ain Shams: 63 Ahmed Esmat St. - Ain Shams");
+			Addresses.push("6<sup>th</sup> of October: Inside Raya Store - in front of Spinneys Market - Gate 22");
+			Addresses.push("Mohandiseen: 5 Fawakeh St., Beside Moustafa Mahmoud Mosque");
+			Addresses.push("Helwan: Mansour St. inside Omar Afandy");
+			Addresses.push("Maadi: 1 El Gazayer Square - Maadi");
+			Addresses.push("Salah Salem: 12 Salah Salem St., El-Obour Buildings");
+			Addresses.push("Shubra: 34 Shubra St.");
+			Addresses.push("Heliopolis: 50 El-Hegaz St.");
+			Addresses.push("Nasr City: El-Serag Mall - Nasr city");
+			Addresses.push("Nasr City: 84 Abass El-Akkad St., Inside Raya Mega Store");
+			Addresses.push("Heliopolis: 43 El-Aith St., In front of Maryland, Inside Raya Mega Store");
+			Addresses.push("Dokki: 14 Musaddak St. - Dokki");
+			Addresses.push("Giza: 7 Wadi El-Nil St.");
+			Addresses.push("Nasr City: 1 Abdel Hamid Lotfy St. - Nasr City");
+			Addresses.push("Giza: 166 El-Haram St.");
+			Addresses.push("Nasr City: City Stars - Shop number 127");
+			Addresses.push("New Cairo: Mall Al-Hamed - inside Smart Shop - 5th District");
+			//Others
+			Addresses.push("Alexandria: 4 Salah Salem St. El Manshya");
+			Addresses.push("Alexandria: 7 El-Sayadla Towers -Hatem mosque - Next to Security Directorate");
+			Addresses.push("Mansoura: 139  Suez Canal St.,  El-Emam El-Zoheri Tower");
+			Addresses.push("Sohag: 81 El Basha - El Sharif St.");
+	
+	</script>
+		
+		<link href="css/jquery-ui.css" rel="stylesheet" />
+	  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+			$(function () {
+				$("#accordion").accordion({
+					collapsible: true
+				});
+			});
+	  </script>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="css/jquery-ui.css" rel="stylesheet" />
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="css/hover.css">
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="css/swiper.css" type="text/css" />
+	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+
+	<link rel="stylesheet" href="css/custom.css" type="text/css" />
+	<script src="js/wow.min.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.counterup.min.js"></script>
+	<script>
+	new WOW().init();
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Document Title
+	============================================= -->
+	<title>Raya Trade</title>
+	<link rel="icon" href="images/Raya-Trade.png">
+
+	</head>
+
+	<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+	<!-- Header
+	============================================= -->
+	<header id="header" class="full-header transparent-header" data-sticky-class="not-dark">
+	<div id="header-wrap">
+	<div class="container">
+	<div class="header-row">
+
+	<!-- Logo
+	============================================= -->
+	<div id="logo">
+	<a href="index.html" class="standard-logo" data-dark-logo="images/Raya-Trade.png"><img src="images/Raya-Trade.png" alt="Canvas Logo"></a>
+	<a href="index.html" class="retina-logo" data-dark-logo="images/Raya-Trade.png"><img src="images/Raya-Trade.png" alt="Canvas Logo"></a>
+	</div><!-- #logo end -->
+
+
+
+	<div id="primary-menu-trigger">
+	<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+	</div>
+
+	<!-- Primary Navigation
+	============================================= -->
+	<nav class="primary-menu">
+
+		<ul class="menu-container">
+		<li class="menu-item">
+			<a class="menu-link hvr-underline-from-center" href="raya-trade.html"><div>Raya Trade</div></a>
+			
+		</li>
+	
+		<li class="menu-item">
+		<a class="menu-link hvr-underline-from-center" href="CE-OS.html"><div>Distribution</div></a>
+		<ul class="sub-menu-container">
+			<li class="menu-item">
+			<a class="menu-link" href="CE-OS.html"><div style="letter-spacing: 1px;">Consumer Electronics and Operator Services</div></a>
+			</li>
+			<li class="menu-item">
+			<a class="menu-link" href="ITP.html"><div style="letter-spacing: 1px;">Information Technology Products</div></a>
+			</li>
+				 </ul>
+		
+		</li>
+		<li class="menu-item mega-menu">
+		<a class="menu-link hvr-underline-from-center" href="Raya-Electronics.html"><div>Electronics</div></a>
+	
+		</li>
+	
+		<li class="menu-item mega-menu">
+		<a class="menu-link hvr-underline-from-center" href="Raya-Smart-Care.html"><div>Smart Care</div></a>
+		
+		</li>
+		<li class="menu-item mega-menu">
+		<a class="menu-link hvr-underline-from-center" href="Raya-Logistics.html"><div>Logistics</div></a>
+		
+		</li>
+		<li class="menu-item mega-menu">
+		<a class="menu-link hvr-underline-from-center" href="Raya-Nigeria.html"><div>Nigeria</div></a>
+		
+		</li>
+	
+		
+		<li class="menu-item mega-menu">
+			<a class="menu-link hvr-underline-from-center" href="Raya-Contact.html"><div>Contact Us</div></a>
+		
+			</li>
+		</ul>
+	
+		</nav><!-- #primary-menu end -->
+
+	
+
+	</div>
+	</div>
+	</div>
+	<div class="header-wrap-clone"></div>
+	</header><!-- #header end -->
+
+	<!-- Page Title
+	============================================= -->
+	<section id="page-title" class="page-title-parallax page-title-dark include-header" style="padding: 250px 0; background-image: url('images/about/parallax.jpg'); background-size: cover; background-position: center center;" data-bottom-top="background-position:0px 400px;" data-top-bottom="background-position:0px -500px;">
+
+	<div class="container clearfix">
+	<h1>Raya Electronics</h1>
+	</div>
+
+	</section>
+	<section class="about-us-trade mt-5">
+        <div class="row pb-5 container m-auto">
+        <div class="col-xl-7">
+   <p class="mt-5">Since its establishment, Raya Electronics has demonstrated its resounding success as a market leader in consumer electronics and IT Products services and products, at the level of retail, e-commerce, and especially corporate business. Raya Electronics offers a premium shopping experience through our operation of over 131 retail outlets, covering numerous districts and areas in Egypt. This broad network of outlets involves 72 retail shops, including partner branded stores and 15 megastores, 18 Raya stores in malls, shopping centers, 10 i2 stores, 15 Samsung shops and 12 HUAWEI shops, and 59 Etisalat franchises and mini franchises. There we offer a full range of customer electronics, services, and after sales support under one roof. We ensure that our customers enjoy a unique shopping experience, flexible installment programs, easy payment options and after sales services while having an easy access to a wide range of high-quality electronics, home appliances, TVs, mobile phones and accessories, tablets, laptops, printers, and cameras and white goods of leading international brands. 
+    </p>
+</div>
+<div class="col-xl-5">
+    <img src="images/raya-mega-store.png" alt="" class="img-fluid">
+</div>
+</div>
+<div style="background-color:#F9F9F9" class="w-100">
+
+        <div style="background-color: #F9F9F9;" class="container m-auto row pb-5 pt-5">
+        <div class="col-xl-5">
+     <img src="images/raya-mega-store.png" alt="" class="img-fluid">
+
+</div>
+<div class="col-xl-7">
+    <h3 style="color:#284db7" class="mt-md-5">Stores and Expansions </h3>
+   <p>Raya always strives to expand its presence and operations in order to cover every nook and cranny. Meanwhile, its notable presence is not limited to its retail offline stores, as it also developed its online presence, launching a user-friendly application and revamping its online shopping portal Rayashop.com which offers a 24/7 availability and a wider variety of product choices, including electrical appliances and beauty products and affordable fast delivery service to all governorates.
+    The retail operations are fully automated through Microsoft Retail Management System and Oracle Financials to ensure controls, stock monitoring and product availability.
+    
+    </p>
+</div>
+</div>
+</div>
+        <div class="row pb-5 pt-5 container m-auto">
+
+        <div class="col-xl-7">
+            <h3 style="color:#284db7">Raya Mega Store</h3>
+            <p>Future is visualized in Raya Mega Stores! Out of our tremendous interest in developing the electronics market in Egypt, we have worked diligently to develop our stores to provide the Egyptian market with electronics stores at the highest level of internationality. This stems from our close interest in improving the customer experience. Already, we have begun to open our new outstanding Raya Mega Stores, and we are working to spread the experience throughout the Republic.
+             </p>
+    </p>
+</div>
+<div class="col-xl-5">
+    <img src="images/raya-mega-store.png" alt="" class="img-fluid">
+</div>
+		</div>
+		<div style="background-color:#F9F9F9" class="w-100">
+        <div style="background-color: #F9F9F9;" class="container m-auto row pb-5 pt-5">
+
+        <div class="col-xl-5">
+            <img src="images/raya-mega-store.png" alt="" class="img-fluid">
+
+</div>
+<div class="col-xl-7">
+    <h3 style="color:#284db7"class="mt-md-5">i2 Stores</h3>
+    <p>In 2020, Raya Trade has made great strides towards becoming the largest distributor of electronics in Egypt by acquiring 100% of the shares of i2 stores, the leading distributor of mobile technology and wireless services in Egypt, after a great deal of 185 million pounds. Through i2, we provide our dear customers with the most prominent electronics, including phones, computers, tablets and accessories of exceptional quality and much more, besides the best maintenance services and after-sales support.
+     </p>
+	</div>
+</div>
+</div>
+        <div class="row pb-5 pt-5 container m-auto">
+
+        <div class="col-xl-7">
+   <h3 style="color:#284db7">Click and Collect</h3>
+   <p>To facilitate the best services to our costumer is our ultimate destination. This is why we introduced Click and Collect service, as a further step to provide all the appropriate options that guarantee the well-being of our dear customers. We offer Click and Collect service through our easy-to-use App and website, giving our dear customers the excellent shopping experience, the fastest service, and the most efficient after-sales service. 
+    This effective step would not have been achieved without our great interest in perfect communication with our customers to ensure their satisfaction.
+    
+    </p>
+</div>
+<div class="col-xl-5">
+    <img src="images/raya-mega-store.png" alt="" class="img-fluid">
+</div>
+		</div>
+		<div style="background-color:#F9F9F9" class="w-100">
+
+        <div style="background-color: #F9F9F9;" class="container m-auto row pb-5 pt-5">
+
+        <div class="col-xl-5">
+            <img src="images/raya-mega-store.png" alt="" class="img-fluid">
+
+</div>
+<div class="col-xl-7">
+    <h3 style="color:#284db7" class="mt-md-5">WhatsApp Raya!</h3>
+    <p>As we are always the closest to our customers, and we strive tirelessly to ensure the best communication with customers, we have launched our channel for effective communication on WhatsApp. Now our customers can communicate with us directly in moments via WhatsApp messages, and we have armed our new channel of communication with automated response services besides hiring a team of professional employees who work to answer all customers’ questions with sincerity.
+     </p>
+	</div>
+</div>
+		</div>
+        <div class="row pb-5 pt-5 container m-auto">
+
+        <div class="col-xl-7">
+   <h3 style="color:#284db7"> Raya Plus – Loyalty Program</h3>
+   <p>With Raya, your enjoyment when you shop goes beyond your shopping experience and even our top-notch after-sales services. With Raya Plus loyalty program, you can collect points on every purchase and earn great discounts at various stores within the broad network of Raya’s partners. All you have to do is sign up on Raya’s app or website, and enjoy the inviting online shopping experience on its platforms. With every purchase, you will get points to redeem after one month of purchase - valid for 1 year. Raya partners’ umbrella includes prominent stores in food and beverage, fashion, entertainment, health, transportation and supermarkets.
+    </p>
+</div>
+<div class="col-xl-5">
+    <img src="images/raya-mega-store.png" alt="" class="img-fluid">
+</div>
+</div>
+	</section>
+	<section class="container mt-5">
+		<div class="row">
+<div id="accordion" class="ui-accordion col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12" role="tablist">
+	<h3>Samsung Stores</h3>
+	<div style="font-weight:normal;max-height:450px;overflow:auto!important">
+			<b>Samsung Mohandessein</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.055380389533386&#39;,&#39;31.201673910971646&#39;,&#39;Samsung Wadi El Nile: 7 wadi El Nile St., Mohandessein&#39;);">
+					7 wadi El Nile St., Mohandessein </a><br /><br />
+
+			<b>Samsung Mokattam </b>:<br /><span></span>  
+				<a href="#" onclick="return FindLocation(&#39;30.013897735738688&#39;,&#39; 31.285628582134784&#39;,&#39;St., 9 al mokattem , building num 29&#39;);">
+					St., 9 al mokattem , building num 29</a><br /><br />
+
+			<b>Samsung Zahraa El Maddi</b>:<br /><span></span> 
+				<a href="#" onclick="return FindLocation(&#39;30.0626010&#39;,&#39;31.2645890&#39;,&#39;building num 4 A masharoa reyhana rysdiens ,zahraa St.,&#39;);">
+					building num 4 A masharoa reyhana rysdiens ,zahraa St.,</a><br /><br />
+
+			<b>Samsung Helipolis </b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0409110&#39;,&#39;31.2092320&#39;,&#39;Dokki: 50 Samsung El Hegaz St., Helipolis&#39;);">
+					50 Samsung El Hegaz St., Helipolis</a><br /><br />
+			
+			<b>Samsung Shoubra</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.1066920&#39;,&#39;31.3336130&#39;,&#39;Heliopolis: Samsung 34 shoubra st. - beside Cinema Dolly &#39;);">
+					Samsung 34 shoubra st. - beside Cinema Dolly </a><br />                    
+				<br />
+
+			<b>Samsung Mall Of Arabia</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;29.8492063&#39;,&#39;31.3316227&#39;,&#39;Mall Of Arabia 6 of October - Ghohayna Sq &#39;);">
+					Mall Of Arabia 6 of October - Ghohayna Sq </a><br /><br />
+
+			<b>Samsung Embaba</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0551040&#39;,&#39;31.2015630&#39;,&#39;88 talat harb St., - Emabab&#39;);">
+					88 talat harb St., - Emabab</a><br /><br>
+		
+
+			<b>Samsung Maadi-Helwan Road</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;29.9749200&#39;,&#39;31.2763130&#39;,&#39;Masr Helwan El Zeraai St. with 161 St. 97 أ -El Maadi infront of Gaz station &#39;);">
+					Masr Helwan El Zeraai St. with 161 St. 97 أ -El Maadi infront of Gaz station </a><br /><br />
+
+			<b>Samsung Ain Shams</b>:<br /><span></span>    
+				<a href="#" onclick="return FindLocation(&#39;30.051253&#39;,&#39;31.201364&#39;,&#39;Mohandiseen: 63 Ahmed Essmat St. – Ain Shams – Cairo&#39;);">
+					63 Ahmed Essmat St. – Ain Shams – Cairo</a><br /><br />
+
+			<b>Samsung Nasr City</b>:<br />
+			<span></span> <a href="#" onclick="return FindLocation(&#39;30.0485940&#39;,&#39;31.3468800&#39;,&#39;55 Abbas Akaad St.- Nasr City&#39;);">
+				55 Abbas Akaad St.- Nasr City</a><br /><br>
+			<b>Samsung Alexandria</b>:<br />
+			<span></span> <a href="#" onclick="return FindLocation(&#39;30.0485940&#39;,&#39;31.3468800&#39;,&#39;55 Abbas Akaad St.- Nasr City&#39;);">
+				Alexandria	21 Syria St., Roushdy	</a><br /><br>
+			<b>Samsung Mansoura</b>:<br />
+			<span></span> <a href="#" onclick="return FindLocation(&#39;30.0485940&#39;,&#39;31.3468800&#39;,&#39;55 Abbas Akaad St.- Nasr City&#39;);">
+				Mansoura	5 Port Said St., Hala Commercial Tower.	</a><br /><br>
+			<b>Samsung Beni Suef</b>:<br />
+			<span></span> <a href="#" onclick="return FindLocation(&#39;30.0485940&#39;,&#39;31.3468800&#39;,&#39;55 Abbas Akaad St.- Nasr City&#39;);">
+				Beni Suef	96 Mohamed Metwally Al-Sharaawy St.		</a><br /><br>	
+		
+	</div>  
+	<h3>Raya Mega Stores</h3>
+	<div style="font-weight:normal;max-height:450px;overflow:auto!important">
+			<b>Mega Faisal </b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0024560&#39;,&#39;31.4240190&#39;,&#39;411 al malek fisal St., - giza&#39;);">
+					411 al malek fisal St.</a><br /><br />
+
+			<b>Mega Gesr Al-Suez  </b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;29.9749200&#39;,&#39;31.3101550&#39;,&#39;43 al layth St.,- on gisr al swiss street infront of vodafone - al zayton - cairo&#39;);">
+					43 Al-Layth St., Al zayton</a><br /><br />
+			<b>Mega Nasr City</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;48 Abbas Akaad St.- Nasr City&#39;);">
+					48 Abbas AL-Akaad St.</a><br /><br>
+			<b>Mega Shoubra</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;71 Shoubra St. – Cairo… &#39;);">
+					71 Shoubra St. </a><br /><br>
+			<b>Mega Helwan</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;39ب tanzem -Mohamed Mostafa El Maraghi St. corner Ragheb St. in fornt of super market El Ma7ml - Helwan&#39;);">
+					45 Mostafa Al-Maraghie St.</a><br /><br>
+			<b>Mega 6th of October </b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Central axis  - beside Hossary Mosque – 6th of October&#39;);">
+					Central axis  - Near AL-Hossary Mosque </a><br /><br>
+			<b>Mega Mohandseen </b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;161 El Sudan Street  – Mohandseen – Giza&#39;);">
+					161 Al-Sudan St.</a><br /><br>
+			<b>Mega Sayeda Zeinab</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;142 El Saad Street – Sayeda Zeinab - Cairo&#39;);">
+					142 Al-Saad St. </a><br />
+			<b>Mega Matarya</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;3 أ ش الحرية – ميدان المطرية – حى الزيتون - محافظة القاهرة&#39;);">
+					3 A Al-Horeya St., Matarya Square.</a><br /><br>
+			<b>Mega New Cairo </b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;concord plaza mall 5th settlement new Cairo..90 street beside arabiate restaurant  &#39;);">
+					Concord Plaza Mall, 5th settlement.  </a><br /><br>
+			<b>Mega Tanta</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;44 Musadak St., Dokki &#39;);">
+					696 Al-Horeya Rd., Louran </a><br /><br>
+			<b>Mega Assuit</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Elharam - 269 Haram St., Cairo Mall &#39;);">
+					14 Al-Gomhoreya St. </a><br /><br>
+			<b>Mega Alexandria</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;1 El Gazayer squ., New Maadi &#39;);">
+					65 Moharram Bek St. Beside Etisalat </a><br /><br>
+			<b>Mega Monufia</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;City stars Mall - ground floor, Nasr City &#39;);">
+					21  Al-Galaa St., Shebeen Al-Kom</a><br /><br>
+		
+	</div>  
+	<h3>Raya Stores</h3>
+	<div style="font-weight:normal;max-height:450px;overflow:auto!important">
+		
+			<b>Raya Dokki</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;1 Abdel Hamid Loutfy St., Makram Ebeid,Nasr city &#39;);">
+					44 Musadak St., </a><br /><br>
+			<b>Raya AL-Haram</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;50 Raya El Hegaz St., Helipolis&#39;);">
+					269 AL-Haram St. - Cairo Mall </a><br /><br>
+			<b>Raya New Maadi</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;12 El Obour Buildings - Salah Salem &#39;);">
+					1 Al-Gazayer Square </a><br /><br>
+			<b>Raya Nasr City</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;59 Shoubra St., Shoubra &#39;);">
+					City stars Mall - ground floor</a><br /><br>
+			<b>Raya Nasr City</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Hyper One - 6th of October &#39;);">
+					1 Abdel Hamid Loutfy St., Makram Ebeid road. </a><br /><br>
+			<b>Raya Heliopolis</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Mall Of Arabia 6 of October - Ghohayna Sq &#39;);">
+					50 Raya Al-Hegaz St., Heliopolis</a><br /><br>
+			<b>Raya Heliopolis</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Galaria 40 6 of october &#39;);">
+					12 Al-Obour Buildings - Salah Salem St. </a><br /><br>
+			<b>Raya Shoubra</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Concord Plaza – 90th St. – 5th District – New Cairo&#39;);">
+					59 Shoubra St. </a><br /><br>
+			<b>Raya 6th of October </b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;First Level , Store Number :B048 , directory store Num :1114 &#39;);">
+					6th of October</a><br /><br>
+			<b>Raya 6th of October</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;166 EL Haram Street &#39;);">
+					Mall Of Arabia, 6 of October </a><br /><br>
+			<b>Raya 6th of October</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;57 St Shoubra - beside Bank Masr&#39;);">
+					Galleria 40</a><br /><br>
+			<b>Raya New Cairo </b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;33 St Abd El Khalek Sarwat Down Town &#39;);">
+					Concord Plaza Mall, 5th settlement </a><br /><br>
+			<b>Raya 6th of October </b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Raya Mall of Egypt, First Level , Store No B048 , directory store no 1114 </a><br /><br>
+			<b>Raya AL-Haram</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					166 AL-Haram St. </a><br /><br>
+			<b>Raya Shoubra</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					57 Shoubra St. </a><br /><br>
+			<b>Raya Downtown </b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					33 Abd Al-Khalek Sarwat St.  </a><br /><br>
+			<b>Raya Maadi</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Maadi City Center . </a><br /><br>
+			<b>Raya Alexandria</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					4 Salah Salem St., Mansheya . </a><br /><br>
+			<b>Raya Alexandria</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					28 Al-Moaskar Al-Romany St., Roushdy . </a><br /><br>
+			<b>Raya Mansoura</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					22 Al-Gomhorya St, Mansoura. </a><br /><br>
+			<b>Raya Alexandria</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Alex City Center, Second level, LB13. </a><br /><br>
+			<b>Raya Alex-Matrouh Rd,</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Unit E23-E24-E25,  ground floor in the commercial mall at Stella Marina Resort - Alex-Matrouh Rd, </a><br /><br>
+			<b>Raya Alex-Matrouh Rd,</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					In front of Amwaj resort, Alex-Matrouh Rd, </a><br /><br>
+			<b>Raya Sayeda Zainab</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					20 Darb Shekamba St., off Al-Sad Al-Gawani Street, the main Al-Sad Street, in front of the Sayeda Zainab Mosque</a><br /><br>
+			<b>Raya Darrasa</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					20 Mansourieh St., Darrasa. </a><br /><br>
+			<b>Raya Shoubra</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					2 Mohamed Ali Diab St., Qesm Al-Sahel.</a><br /><br>
+			<b>Raya Bab Al-Shearia</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					218 Al-Guish St., Bab Al-Shearia.</a><br /><br>
+			<b>Raya Saray Al-Qubba</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					33 Ibn Sender St., Corner of Bani Aqil St., Saray Al-Qubba, Al-Zaytoun.</a><br /><br>
+			<b>Raya Sayeda Zainab</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					51 Majlis Al-Umma St., Nasiriyah, Sayeda Zainab.</a><br /><br>
+			<b>Raya Maadi</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					13 Police Buildings St. 233, Degla, Maadi.</a><br /><br>
+			<b>Raya Al-Weili</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					2 Omar Ibn Al-Khattab St., off the Petroleum Companies St.,</a><br /><br>
+			<b>Raya Al-Sayeda Aisha</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					60 Al-Sayeda Aisha St., Al-Khalifa.</a><br /><br>
+			<b>Raya Matareya</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					55 Al-Horreya St. – Matareya.</a><br /><br>
+			<b>Raya Al Salam</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					1 Abdel Rahman Awaida off Gamal Abdel Nasser St., Al Salam.</a><br /><br>
+			<b>Raya Sawaah</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					56 Amiria' old residences, Dabsha station, Zaytoun.</a><br /><br>
+			<b>Raya Al-Salam</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Block 53 Cairo Bldgs., Al-Abed Square, Al-Salam .</a><br /><br>
+			<b>Raya Shoubra</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					9 Rawd Al-Farag St.</a><br /><br>
+			<b>Raya Nasr City</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Building 1B, Block 19A, Store 480, Journalists Syndicate Buildings, Eighth district.</a><br /><br>
+			<b>Raya Nasr City</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					14 Al-Khalifa St., Sixth District .</a><br /><br>
+			<b>Raya Ain Shams</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					13 Ain Shams St. </a><br /><br>
+			<b>Raya Ain Shams</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					1 Kamel Behairy St., corner of Al-Eshreen St. </a><br /><br>
+			<b>Raya Ain Shams</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					4 Al-Horreya St., Eastern Ain Shams .</a><br /><br>
+			<b>Raya Shoubra</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					34 Shubra St.</a><br /><br>
+			<b>Raya Al-Weili</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Teachers Tower - 8 Misr and Sudan St. - Waili .</a><br /><br>
+			<b>Raya Ain Shams</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					29 Ahmed Esmat St. </a><br /><br>
+			<b>Raya Hadayek Al-Kobba</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					1 Youssef Medawar St. off Dewidar St. </a><br /><br>
+			<b>Raya Shoubra</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					1 Nasr Al-Islam St., Victoria Square, Sahel. </a><br /><br>
+			<b>Raya Imbaba</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					2 Awlad Rakha St., New Bashtil St. </a><br /><br>
+			<b>Raya Al Barajil</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					1 Jamal Al-Beblawi St. - Al-Barajil Road. </a><br /><br>
+			<b>Raya Imbaba</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Al-Nasr St., Ard Al Gemayah. </a><br /><br>
+			<b>Raya Al-Basatin</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					3 Ibrahim Hussein St. </a><br /><br>
+			<b>Raya El Matareya</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					161 Al-Masala Square, Trolly St.  </a><br /><br>
+			<b>Raya Imbaba</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					7 Al-Amel El-Awel Street, Imbaba </a><br /><br>
+			<b>Raya Al-Waili</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					4 Al-Muniri Street, Egypt and Sudan, Al-Waili. </a><br /><br>
+			<b>Raya Maadi</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Abdel Moneim Riyad Arab St., next to Aman Branch </a><br /><br>
+		
+			<b>Raya Al Munirah</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Al-Mawardy St., Al-Qasr Al-Ainy</a><br /><br>
+		
+			<b>Raya Mokattam</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					46 Delta Company Residences, Sobhi Hussein Street, Mokattam </a><br /><br>
+		
+			<b>Raya MF - Kolt Beah </b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Qubeta Church St., off Clot Bek St. </a><br /><br>
+		
+			<b>Raya Makram Ebeid</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Rabaa Al-Adawiya Buildings, Autostrad, in front of Makram Ebeid City Center </a><br /><br>
+		
+			<b>Raya Nasr City</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Block No. 62 Mostafa Al-Nahhas Street, Eighth District </a><br /><br>
+		
+			<b>Raya Kafr Al-Alou</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					1 Corniche Street, AbdAl-Sabour neighborhood, Sheikha Kafr Al-Alou.</a><br /><br>
+		
+			<b>Raya Maadi</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Abdel Hamid Mekky St., Maadi</a><br /><br>
+		
+			<b>Raya Hadayek Al-Maadi</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					31 Ali Abdel Aziz St., Hadayek Al-Maadi </a><br /><br>
+		
+			<b>Raya Tawabek</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					115 Al-Manshiah St., Tawabek, King Faisal</a><br /><br>
+		
+			<b>Raya Kafr Tohrmos</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+					Hussein Siraj Street - Kafr Tohrmos</a><br /><br>
+
+					
+			
+	</div>  
+	<h3>Etisalat Stores</h3>
+	<div style="font-weight:normal;max-height:450px;overflow:auto!important">
+			
+					
+			<b>Etisalat Mohandessin</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				51 Ahmed Orabi St.</a><br /><br>	
+			<b>Etisalat Mansoura</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				Farida Hassan Street, Mansoura</a><br /><br>	
+			<b>Etisalat Shobra Elkhaima</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				8 Al-Nour Alley, Al-Nour Tower, off 15th of May Street </a><br /><br>	
+			<b>Etisalat Damanhour</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				43 Abdel Salam Al-Shazly St</a><br /><br>	
+			<b>Etisalat Nasr City</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				13 El Obour Buildings, Phase One, Salah Salem St.</a><br /><br>	
+			<b>Etisalat Banha</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				4 Corniche Street - Villas area - New Banha </a><br /><br>	
+			<b>Etisalat Hedeyek Al-koba</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				127 Misr and Sudan St., Hadayek Al-Kobba</a><br /><br>	
+			<b>Etisalat Dokki</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				19 Al Mesaha Street, Dokki</a><br /><br>	
+			<b>Etisalat Abbasiya</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				353 Ramses St.</a><br /><br>	
+			<b>Etisalat Alexandria</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				1 Dr. Morrison St., Roushdy</a><br /><br>	
+			<b>Etisalat New Cairo</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				Concord Mall, 90th St., Fifth Settlement</a><br /><br>	
+			<b>Etisalat Nasr City</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				542 Ahmed Al-Zomor St., in front of Vodafone, the 10th district</a><br /><br>	
+			<b>Etisalat Al-Marg</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				152 Al Sarf Al Sehi St., Al-Marg Al-Gharbi St.</a><br /><br>	
+			<b>Etisalat Mokattam</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				1 Sbeko buildings., Extension of Rd. 9, Mokattam, Cairo</a><br /><br>	
+			<b>Etisalat Hedayek Al-Maadi</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				45 Street 9 - Corner of Hassanein Al-Desouky</a><br /><br>		
+	</div>  
+	<h3>Huawei Stores</h3>
+	<div style="font-weight:normal;max-height:450px;overflow:auto!important">
+		
+			<b>huawei Dokki</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				14 Mossadeq St.</a><br /><br>	
+			<b>huawei Heliopolis</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				93 Hegaz St.</a><br /><br>	
+			<b>huawei Nasr City</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				1 Abdel Hamid Lotfy, Makram Ebeid </a><br /><br>	
+			<b>huawei Embaba</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				105 Al Wahda St.,</a><br /><br>	
+			<b>huawei Alexandria</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				Pharmacists Towers , Smouha </a><br /><br>	
+			<b>huawei Maadi</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				1 Algeria Square</a><br /><br>	
+			<b>huawei Ismailia</b>:<br /><span></span>
+			<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;Raya City Center Maadi new &#39;);">
+				41 Shebin Al-Koum St. - next to Mobinil</a><br /><br>	
+		
+	</div>  
+	
+</div>
+
+
+<div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12" style="overflow: hidden">
+<div id="map" class="MapLoad" style="width:100%;height:500px;position:static !important"></div>
+<p style="font-weight:normal">Click the map pin for more information about the branch.</p>
+</div>
+</div>
+</div>
+</section>
+<br>
+
+
+
+	<!-- Footer
+	============================================= -->
+		<!-- Footer -->
+		<!-- Footer -->
+		<footer style="background:#282828" class="page-footer font-small blue pt-4">
+
+			<!-- Footer Links -->
+			<div class="container text-md-left">
+		  
+			  <!-- Grid row -->
+			  <div class="row">
+		  
+				<!-- Grid column -->
+				<div class="col-md-6 col-12 col-sm-12 col-xl-3 col-lg-3 mt-md-0 mt-5 text-left">
+		  
+				  <!-- Content -->
+					<img src="images/Raya-Trade-footer.png" width="180" class="img-fluid" alt="">
+					<p style="font-size: 15px;" class="mt-3 mx-auto"> Raya Trade has been a well-established corporate. Now, it operates several subsidiaries, including Raya Electronics, Rata Distribution, Raya Smart Care, Raya Logistics and Raya Trade – Nigeria. </p>
+		  
+				</div>
+				<!-- Grid column -->
+		  
+				<hr class="clearfix w-100 d-md-none pb-3">
+		  
+				<!-- Grid column -->
+				<div class="col-md-6 col-12 col-sm-12 col-xl-3 col-lg-3 mb-md-0 mb-3">
+					
+				  <!-- Links -->
+		  
+				  <ul class="list-unstyled mt-3 text-center">
+					<li class="pb-2">
+					  <a href="http://rayacorp.com/" style="color:#6c8ce6">Raya Holding</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="raya-trade.html" style="color:#6c8ce6">Raya Trade</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="CE-OS.html" style="color:#6c8ce6">Distribution</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="Raya-Electronics.html" style="color:#6c8ce6">Raya Electronics</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="Raya-Smart-Care.html" style="color:#6c8ce6">Raya Smart Care</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="Raya-Logistics.html" style="color:#6c8ce6">Raya Logistics</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="Raya-Nigeria.html" style="color:#6c8ce6">Raya Nigeria</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="Raya-Contact.html" style="color:#6c8ce6">Contact Us</a>
+					</li>
+					
+				  </ul>
+		  
+				</div>
+				<!-- Grid column -->
+		  
+				<!-- Grid column -->
+				<div class="col-md-6 col-12 col-sm-12 col-xl-6 col-lg-6 mb-md-0 mb-3 mt-3">
+					  <div class="row">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<h5 style="color:#fff;">Raya Trade Egypt</h5>
+							<ul class="list-unstyled contact-raya">
+								<li>Address: North Tower, Galleria40, 26th of July St., 6th of October, 12568 Egypt</li>
+								<li>			Tel:  +(202) 38276000
+								</li>
+								<li>			Fax:  +(202) 38276001
+								</li>
+								<li>info@rayacorp.com
+								</li>
+								
+							</ul>
+							
+							
+							
+						  </div>
+						  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							  <ul class="list-unstyled">
+								  <li>			<h5 style="color:#fff;">Raya Trade Nigeria</h5>
+								  </li>
+								  <li>Address: 22B Akinola Cole Crescent Off Adeniyi Jones, Ikeja, Lagos, Nigeria</li>
+								  <li>			Tel:   +(234) 9461 0527
+								  </li>
+								  
+								  
+							  </ul>
+							
+							
+						</div>
+			</div>
+				<!-- Grid column -->
+		  
+			  </div>
+			  <!-- Grid row -->
+		  
+			</div>
+			<!-- Footer Links -->
+		  
+			<!-- Copyright -->
+			<div class="footer-copyright text-center py-3">2021 Copyright By
+			  <a href="raya-trade.html">RAYA Trade - Privacy Policy
+		
+			  </a>
+			</div>
+			<!-- Copyright -->
+		  
+		  </footer>
+  <!-- Footer --><!-- #wrapper end -->
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="js/jquery.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="js/plugins.min.js"></script>
+    <script src="js/popper.js"></script>
+    <script src="js/bootstrap.js"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="js/functions.js"></script>
+	<script src="js/script.js"></script>
+	
+
+	
+	</body>
+
+	</html>

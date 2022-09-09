@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+	<html dir="ltr" lang="en-US">
+	<head>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<script type="text/javascript" src='https://maps.googleapis.com/maps/api/js?key=AIzaSyBlyEWJCx7TKWS2Y61Hcq5hJSWhCSYO240'></script>
+		<script type="text/javascript">
+			var map; var infowindow;
+			function InitializeMapMain() {
+				var latlng = new google.maps.LatLng(30.78903675126116, 31.146240234375); //  27.068909, 34.541016
+				var myOptions =
+				{
+					zoom: 8,
+					center: latlng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(document.getElementById("map"), myOptions);
+			}
+			function InitializeMap() {
+				var latlng = new google.maps.LatLng(30.040041677300568, 31.207523345947266); //26.686729520004, 31.904296875 == 29.978729, 30.739746
+				var myOptions =
+				{
+					zoom: 15,
+					center: latlng,
+					mapTypeId: google.maps.MapTypeId.ROADMAP
+				};
+				map = new google.maps.Map(document.getElementById("map"), myOptions);
+			}
+			function markicons() {
+				InitializeMapMain();
+				var xx = document.getElementById("Lit_Latitude");
+				for (var i = 0; i <= ltlng.length; i++) {
+	
+					marker = new google.maps.Marker({
+						map: map,
+						position: ltlng[i],
+						title: 'click here!',
+						icon: '/images/GoogleIcon.png'
+					});
+	
+					(function (i, marker) {
+						google.maps.event.addListener(marker, 'click', function () {
+	
+							if (!infowindow) {
+								infowindow = new google.maps.InfoWindow();
+							}
+							infowindow.setContent(Addresses[i]);
+							infowindow.open(map, marker); // Calling the open method of the infoWindow 
+						});
+	
+					})(i, marker);
+	
+	
+				}
+	
+			}
+	
+			function FindLocation(lat, lng, info) {
+				geocoder = new google.maps.Geocoder();
+				InitializeMap();
+				var latlng = new google.maps.LatLng(lat, lng);
+	
+				map.setCenter(latlng);
+				var marker = new google.maps.Marker({
+					map: map,
+					position: latlng,
+					icon: '/images/GoogleIcon.png'
+				});
+	
+				var infowindow = new google.maps.InfoWindow({
+					content: info
+				});
+	
+				google.maps.event.addListener(marker, 'click', function () {
+					// Calling the open method of the infoWindow 
+					infowindow.open(map, marker);
+				});
+				infowindow.open(map, marker);
+				return false;
+	
+			}
+			window.onload = markicons;
+	
+			var ltlng = [];
+			ltlng.push(new google.maps.LatLng(30.0626010, 31.2645890));
+			ltlng.push(new google.maps.LatLng(30.1269120, 31.3272190));
+			ltlng.push(new google.maps.LatLng(30.005354, 30.970986));
+			
+			ltlng.push(new google.maps.LatLng(30.051253, 31.201364));
+			ltlng.push(new google.maps.LatLng(29.8492063, 31.3316227));
+			ltlng.push(new google.maps.LatLng(29.9749200, 31.2763130));
+			ltlng.push(new google.maps.LatLng(30.0770280, 31.3101550));
+	
+			ltlng.push(new google.maps.LatLng(30.0688640, 31.2452820));
+			ltlng.push(new google.maps.LatLng(30.1066920, 31.3336130));
+			ltlng.push(new google.maps.LatLng(30.0513620, 31.3502330));
+			ltlng.push(new google.maps.LatLng(30.0566282, 31.3213528));
+			ltlng.push(new google.maps.LatLng(30.100445, 31.316403));
+			ltlng.push(new google.maps.LatLng(30.0409110, 31.2092320));
+			ltlng.push(new google.maps.LatLng(30.0551040, 31.2015630));
+			ltlng.push(new google.maps.LatLng(30.0485940, 31.3468800));
+			ltlng.push(new google.maps.LatLng(29.994260, 31.1608780));
+			ltlng.push(new google.maps.LatLng(30.0737150, 31.3463000));
+			ltlng.push(new google.maps.LatLng(30.0024560, 31.4240190));
+	
+			ltlng.push(new google.maps.LatLng(31.1984500, 29.8934110));
+			ltlng.push(new google.maps.LatLng(31.2117080, 29.9504730));
+			ltlng.push(new google.maps.LatLng(31.0439620, 31.3664340));
+			ltlng.push(new google.maps.LatLng(26.5643090, 31.6933070));
+	
+			var Addresses = [];
+			//Greater Cairo
+			Addresses.push("El-Zaher: 2  El-Abbasya St.- In front of El-Zaher Bebars Mosque - Meeting Point Mall");
+			Addresses.push("Ain Shams: 63 Ahmed Esmat St. - Ain Shams");
+			Addresses.push("6<sup>th</sup> of October: Inside Raya Store - in front of Spinneys Market - Gate 22");
+			Addresses.push("Mohandiseen: 5 Fawakeh St., Beside Moustafa Mahmoud Mosque");
+			Addresses.push("Helwan: Mansour St. inside Omar Afandy");
+			Addresses.push("Maadi: 1 El Gazayer Square - Maadi");
+			Addresses.push("Salah Salem: 12 Salah Salem St., El-Obour Buildings");
+			Addresses.push("Shubra: 34 Shubra St.");
+			Addresses.push("Heliopolis: 50 El-Hegaz St.");
+			Addresses.push("Nasr City: El-Serag Mall - Nasr city");
+			Addresses.push("Nasr City: 84 Abass El-Akkad St., Inside Raya Mega Store");
+			Addresses.push("Heliopolis: 43 El-Aith St., In front of Maryland, Inside Raya Mega Store");
+			Addresses.push("Dokki: 14 Musaddak St. - Dokki");
+			Addresses.push("Giza: 7 Wadi El-Nil St.");
+			Addresses.push("Nasr City: 1 Abdel Hamid Lotfy St. - Nasr City");
+			Addresses.push("Giza: 166 El-Haram St.");
+			Addresses.push("Nasr City: City Stars - Shop number 127");
+			Addresses.push("New Cairo: Mall Al-Hamed - inside Smart Shop - 5th District");
+			//Others
+			Addresses.push("Alexandria: 4 Salah Salem St. El Manshya");
+			Addresses.push("Alexandria: 7 El-Sayadla Towers -Hatem mosque - Next to Security Directorate");
+			Addresses.push("Mansoura: 139  Suez Canal St.,  El-Emam El-Zoheri Tower");
+			Addresses.push("Sohag: 81 El Basha - El Sharif St.");
+	
+	</script>
+		
+		<link href="css/jquery-ui.css" rel="stylesheet" />
+	  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+		<script>
+			$(function () {
+				$("#accordion").accordion({
+					collapsible: true
+				});
+			});
+	  </script>
+
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="author" content="SemiColonWeb" />
+
+	<!-- Stylesheets
+	============================================= -->
+	<link href="css/jquery-ui.css" rel="stylesheet" />
+
+	<link href="https://fonts.googleapis.com/css?family=Lato:300,400,400i,700|Poppins:300,400,500,600,700|PT+Serif:400,400i&display=swap" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="css/all.css">
+	<link rel="stylesheet" href="css/hover.css">
+	<link rel="stylesheet" href="css/bootstrap.css" type="text/css" />
+	<link rel="stylesheet" href="css/dark.css" type="text/css" />
+	<link rel="stylesheet" href="style.css" type="text/css" />
+	<link rel="stylesheet" href="css/swiper.css" type="text/css" />
+	<link rel="stylesheet" href="css/font-icons.css" type="text/css" />
+	<link rel="stylesheet" href="css/animate.css" type="text/css" />
+	<link rel="stylesheet" href="css/magnific-popup.css" type="text/css" />
+
+	<link rel="stylesheet" href="css/custom.css" type="text/css" />
+	<script src="js/wow.min.js"></script>
+	<script src="js/jquery.waypoints.min.js"></script>
+	<script src="js/jquery.counterup.min.js"></script>
+	<script>
+	new WOW().init();
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+	<!-- Document Title
+	============================================= -->
+	<title>Raya Trade</title>
+	<link rel="icon" href="images/Raya-Trade.png">
+
+	</head>
+
+	<body class="stretched">
+
+	<!-- Document Wrapper
+	============================================= -->
+	<div id="wrapper" class="clearfix">
+
+	<!-- Header
+	============================================= -->
+	<header id="header" class="full-header transparent-header" data-sticky-class="not-dark">
+	<div id="header-wrap">
+	<div class="container">
+	<div class="header-row">
+
+	<!-- Logo
+	============================================= -->
+	<div id="logo">
+	<a href="index.html" class="standard-logo" data-dark-logo="images/Raya-Trade.png"><img src="images/Raya-Trade.png" alt="Canvas Logo"></a>
+	<a href="index.html" class="retina-logo" data-dark-logo="images/Raya-Trade.png"><img src="images/Raya-Trade.png" alt="Canvas Logo"></a>
+	</div><!-- #logo end -->
+
+
+
+	<div id="primary-menu-trigger">
+	<svg class="svg-trigger" viewBox="0 0 100 100"><path d="m 30,33 h 40 c 3.722839,0 7.5,3.126468 7.5,8.578427 0,5.451959 -2.727029,8.421573 -7.5,8.421573 h -20"></path><path d="m 30,50 h 40"></path><path d="m 70,67 h -40 c 0,0 -7.5,-0.802118 -7.5,-8.365747 0,-7.563629 7.5,-8.634253 7.5,-8.634253 h 20"></path></svg>
+	</div>
+
+	<!-- Primary Navigation
+	============================================= -->
+	<nav class="primary-menu">
+
+		<ul class="menu-container">
+		<li class="menu-item">
+			<a class="menu-link hvr-underline-from-center" href="raya-trade.html"><div>Raya Trade</div></a>
+			
+		</li>
+	
+		<li class="menu-item">
+		<a class="menu-link hvr-underline-from-center" href="CE-OS.html"><div>Distribution</div></a>
+		<ul class="sub-menu-container">
+			<li class="menu-item">
+			<a class="menu-link" href="CE-OS.html"><div style="letter-spacing: 1px;">Consumer Electronics and Operator Services</div></a>
+			</li>
+			<li class="menu-item">
+			<a class="menu-link" href="ITP.html"><div style="letter-spacing: 1px;">Information Technology Products</div></a>
+			</li>
+				 </ul>
+		
+		</li>
+		<li class="menu-item mega-menu">
+		<a class="menu-link hvr-underline-from-center" href="Raya-Electronics.html"><div>Electronics</div></a>
+	
+		</li>
+	
+		<li class="menu-item mega-menu">
+		<a class="menu-link hvr-underline-from-center" href="Raya-Smart-Care.html"><div>Smart Care</div></a>
+		
+		</li>
+		<li class="menu-item mega-menu">
+		<a class="menu-link hvr-underline-from-center" href="Raya-Logistics.html"><div>Logistics</div></a>
+		
+		</li>
+		<li class="menu-item mega-menu">
+		<a class="menu-link hvr-underline-from-center" href="Raya-Nigeria.html"><div>Nigeria</div></a>
+		
+		</li>
+	
+		
+		<li class="menu-item mega-menu">
+			<a class="menu-link hvr-underline-from-center" href="Raya-Contact.html"><div>Contact Us</div></a>
+		
+			</li>
+		</ul>
+	
+		</nav><!-- #primary-menu end -->
+
+	
+
+	</div>
+	</div>
+	</div>
+	<div class="header-wrap-clone"></div>
+	</header><!-- #header end -->
+
+	<!-- Page Title
+	============================================= -->
+	<section id="page-title" class="page-title-parallax page-title-dark include-header" style="padding: 250px 0; background-image: url('images/about/parallax.jpg'); background-size: cover; background-position: center center;" data-bottom-top="background-position:0px 400px;" data-top-bottom="background-position:0px -500px;">
+
+	<div class="container clearfix">
+	<h1>Raya Smart Care</h1>
+	</div>
+
+	</section>
+	<section class="container about-us-trade">
+		<h1 class="text-primary mt-5 text-center d-flex align-items-center justify-content-center">About Raya Smart Care</h1>
+		<p>Raya Smart Care services started as the first multi-brand mobile customer service center in Egypt. Encompassing a wide portfolio of Mobile brands Nokia, SAMSUNG, Huawei, Lenovo, Motorola, ZTE, Asus, and many more.
+            Backed up with an ISO 9001:2008, 14001:2004, OHSAS 18001:2007 certified operations; Raya Smart Care efficiently serves beyond 28,000 customers per month through a network of over 60 touch Points all over Egypt.
+            A work force of highly skilled and passionate experts who strive to introduce a special customer experience throughout the service centers. Raya Smart Care service reflects the highest technical levels of repair in an ultra-modern repair factory with 100% compliance with brands’ standards. In line with Raya’s vision of diversifying the portfolio within its operations; Raya Smart Care services expanded its portfolio to include consumer electronics and IT Products services. 
+            
+			</p>
+            
+            <h4>RAYA SMART CARE<button class="btn btn-primary mx-2">
+                <a style="color:#fff;" href="http://www.rayasmartcare.com/en/">Visit Website</a>
+            </button></h4>
+	</section>
+	<!-- Content
+	============================================= -->
+	<section class="container mt-5">
+		<div class="row">
+<div id="accordion" class="ui-accordion col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12" role="tablist">
+	<h3>Maintenance Centers</h3>
+	<div style="font-weight:normal;max-height:450px;overflow:auto!important">
+			<b>Shoubra </b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.055380389533386&#39;,&#39;31.201673910971646&#39;,&#39;59 ش شبرا . بجوار بى تك &#39;);">
+					Shoubra 	59 Shoubra St., Near B.Tech	</a><br /><br />
+
+			<b>Tanta</b>:<br /><span></span>  
+				<a href="#" onclick="return FindLocation(&#39;30.013897735738688&#39;,&#39; 31.285628582134784&#39;,&#39;50 ش سعيد بجوار ماركت فتح الله - داخل محل رايه ميجا ستورز &#39;);">
+					Tanta	50 Saeed St. next to Fathallah Market - inside Raya Mega Stores	 </a><br /><br />
+
+			<b>Gesr Al-suiz</b>:<br /><span></span> 
+				<a href="#" onclick="return FindLocation(&#39;30.0626010&#39;,&#39;31.2645890&#39;,&#39;43 ش الليث - امام عمارات المريلاند - عمارة راية &#39;);">
+					Gesr Al-suiz	43 Al-Laith St. - in front of Maryland Buildings - Raya Building	</a><br /><br />
+
+			<b>Nasr City</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0409110&#39;,&#39;31.2092320&#39;,&#39; ش عبد الحميد لطفى - اخر مكرم عبيد - مدينة نصر &#39;);">
+					Nasr City	1 Abdel Hamid Lotfy St., Makram Ebeid	</a><br /><br />
+			
+			<b>Haram</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.1066920&#39;,&#39;31.3336130&#39;,&#39;166 ش الهرم بجوار شارع العريش&#39;);">
+					Haram	166 Haram St., near Al-Arish Street.	</a><br />                    
+				<br />
+
+			<b>Assuit</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;29.8492063&#39;,&#39;31.3316227&#39;,&#39;70أ ش الجمهوريه &#39;);">
+					Assuit	70A Al-Gomhoria St.	 </a><br /><br />
+
+			<b>Alexandria</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0551040&#39;,&#39;31.2015630&#39;,&#39;4 ش صلاح سالم امام جراج الاتحاد المنشيه &#39;);">
+					4 Salah Salem St., in front of Al-Ittihad Garage, Al-Manshiah </a><br />
+					<br>
+
+			<b>6th of October</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;29.9749200&#39;,&#39;31.2763130&#39;,&#39;مول العرب بوابه رقم 22 امام سبينس ماركت داخل رايه  &#39;);">
+					6th of October	Mall of Arabia Gate No. 22 in front of Spence Market, inside Raya Shop	 </a><br /><br />
+
+			<b>Alexandria</b>:<br /><span></span>    
+				<a href="#" onclick="return FindLocation(&#39;30.051253&#39;,&#39;31.201364&#39;,&#39;696 طريق الحريه امام كاربت سيتي لوران -اسكندريه&#39;);">
+					Alexandria	696 Al-Horeya Rd., Louran	</a><br /><br />
+
+			<b>Helwan</b>:<br />
+			<span></span> <a href="#" onclick="return FindLocation(&#39;30.0485940&#39;,&#39;31.3468800&#39;,&#39;39 ب تنظيم ش محمد مصطفى المراغى مع ش راغب امام سوبر ماركت أولاد رجب  وماكدونالدز - حلوان&#39;);">
+				Helwan	39B Mohamed Mostafa El Maraghy, in front of Ragab Sons Supermarket and McDonald's	</a><br /><br>
+			<b>Mohandessin</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0024560&#39;,&#39;31.4240190&#39;,&#39;ش السودان -  ناصية ش عدن - أمام السلام شوبنج سنتر - المهندسين - الجيزة161&#39;);">
+					Sudan St - corner of Aden St - in front of Salam Shopping Center</a><br /><br />
+
+			<b>Maadi</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;29.9749200&#39;,&#39;31.3101550&#39;,&#39;1ميدان الجزائر_ المعادى_ القاهرة أمام سوبر ماركت أولاد رجب&#39;);">
+					Maadi	1 Algeria Square	</a><br /><br />
+			<b>Mansoura</b>:<br /><span></span>
+				<a href="#" onclick="return FindLocation(&#39;30.0688640&#39;,&#39;31.2452820&#39;,&#39;22 ش الجمهوريه - برج النورس - المشايه العلويه - أمام بوابة جامعه المنصوره الرئيسيه - المنصوره&#39;);">
+					Mansoura	22 El-Gomhouria St. - Al-Nawras Tower, in front of the main Mansoura University gate.	</a><br /><br>
+			
+	</div>  
+
+	
+</div>
+
+
+<div class="col-xl-6 col-lg-6 col-md-6 col-12 col-sm-12" style="overflow: hidden">
+<div id="map" class="MapLoad" style="width:100%;height:500px;position:static !important"></div>
+<p style="font-weight:normal">Click the map pin for more information about the branch.</p>
+</div>
+</div>
+</div>
+</section>
+
+			<!-- Footer -->
+		<!-- Footer -->
+		<footer style="background:#282828" class="page-footer font-small blue pt-4">
+
+			<!-- Footer Links -->
+			<div class="container text-md-left">
+		  
+			  <!-- Grid row -->
+			  <div class="row">
+		  
+				<!-- Grid column -->
+				<div class="col-md-6 col-12 col-sm-12 col-xl-3 col-lg-3 mt-md-0 mt-5 text-left">
+		  
+				  <!-- Content -->
+					<img src="images/Raya-Trade-footer.png" width="180" class="img-fluid" alt="">
+					<p style="font-size: 15px;" class="mt-3 mx-auto"> Raya Trade has been a well-established corporate. Now, it operates several subsidiaries, including Raya Electronics, Rata Distribution, Raya Smart Care, Raya Logistics and Raya Trade – Nigeria. </p>
+		  
+				</div>
+				<!-- Grid column -->
+		  
+				<hr class="clearfix w-100 d-md-none pb-3">
+		  
+				<!-- Grid column -->
+				<div class="col-md-6 col-12 col-sm-12 col-xl-3 col-lg-3 mb-md-0 mb-3">
+					
+				  <!-- Links -->
+		  
+				  <ul class="list-unstyled mt-3 text-center">
+					<li class="pb-2">
+					  <a href="http://rayacorp.com/" style="color:#6c8ce6">Raya Holding</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="raya-trade.html" style="color:#6c8ce6">Raya Trade</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="CE-OS.html" style="color:#6c8ce6">Distribution</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="Raya-Electronics.html" style="color:#6c8ce6">Raya Electronics</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="Raya-Smart-Care.html" style="color:#6c8ce6">Raya Smart Care</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="Raya-Logistics.html" style="color:#6c8ce6">Raya Logistics</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="Raya-Nigeria.html" style="color:#6c8ce6">Raya Nigeria</a>
+					</li>
+					<li  class="pb-2">
+					  <a href="Raya-Contact.html" style="color:#6c8ce6">Contact Us</a>
+					</li>
+					
+				  </ul>
+		  
+				</div>
+				<!-- Grid column -->
+		  
+				<!-- Grid column -->
+				<div class="col-md-6 col-12 col-sm-12 col-xl-6 col-lg-6 mb-md-0 mb-3 mt-3">
+					  <div class="row">
+						<div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							<h5 style="color:#fff;">Raya Trade Egypt</h5>
+							<ul class="list-unstyled contact-raya">
+								<li>Address: North Tower, Galleria40, 26th of July St., 6th of October, 12568 Egypt</li>
+								<li>			Tel:  +(202) 38276000
+								</li>
+								<li>			Fax:  +(202) 38276001
+								</li>
+								<li>info@rayacorp.com
+								</li>
+								
+							</ul>
+							
+							
+							
+						  </div>
+						  <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12 col-12">
+							  <ul class="list-unstyled">
+								  <li>			<h5 style="color:#fff;">Raya Trade Nigeria</h5>
+								  </li>
+								  <li>Address: 22B Akinola Cole Crescent Off Adeniyi Jones, Ikeja, Lagos, Nigeria</li>
+								  <li>			Tel:   +(234) 9461 0527
+								  </li>
+								  
+								  
+							  </ul>
+							
+							
+						</div>
+			</div>
+				<!-- Grid column -->
+		  
+			  </div>
+			  <!-- Grid row -->
+		  
+			</div>
+			<!-- Footer Links -->
+		  
+			<!-- Copyright -->
+			<div class="footer-copyright text-center py-3">2021 Copyright By
+			  <a href="raya-trade.html">RAYA Trade - Privacy Policy
+		
+			  </a>
+			</div>
+			<!-- Copyright -->
+		  
+		  </footer>
+
+	<!-- Go To Top
+	============================================= -->
+	<div id="gotoTop" class="icon-angle-up"></div>
+
+	<!-- JavaScripts
+	============================================= -->
+	<script src="js/jquery.js"></script>
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script src="js/plugins.min.js"></script>
+
+	<!-- Footer Scripts
+	============================================= -->
+	<script src="js/functions.js"></script>
+	<script src="js/bootstrap.js"></script>
+	<script src="js/script.js"></script>
+
+
+	</body>
+	</html>
